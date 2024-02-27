@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario</title>
+    <link rel="stylesheet" href="../static/css/Formulario.css" />
+  </head>
+
+  <body>
+    <div class="logout-button">
+      <form action="/logout" method="post" class="logout">
+        <button type="submit">Cerrar sesión</button>
+      </form>
+    </div>
+
+    <div class="Container">
+      <form action="/Lista" method="post">
+        <img class="Logo" src="/static/img/ct.png" alt="" />
+        <h2>Buscar nombre de estudiante</h2>
+        <input type="text" required placeholder="Nombre" name="nombre" />
+        <button value="Lista">Buscar</button>
+      </form>
+
+      {% if resultados %}
+        <div class="tabla-container">
+          <table>
+            <tr class="Encabezado">
+              <th>Clave cliente</th>
+              <th>Nombre</th>
+              <th>Correo</th>
+              <th>Telefono contacto</th>
+            </tr>
+            {% for resultado in resultados %}
+            <tr>
+              <td>{{ resultado.Clave }}</td>
+              <td>{{ resultado.Nombre }}</td>
+              <td>{{ resultado.Correo }}</td>
+              <td>{{ resultado.Telefono }}</td>
+            </tr>
+            {% endfor %}
+          </table>
+        </div>
+      {% endif %}
+    </div>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista</title>
+    <link rel="stylesheet" href="../static/css/Tabla.css" />
+  </head>
+  <body>
+	<div class="logout-button">
+        <form action="/logout" method="post" class="logout">
+        <button type="submit">Cerrar sesion</button>
+      </form>
+    </div>
+	
+    <h2>Upchiapas Buscador :)</h2>
+    {% if resultados %}
+    <table>
+      <tr class="Encabezado">
+		<th>Clave cliente</th>
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th>Telefono contacto</th>
+      </tr>
+      {% for resultado in resultados %}
+      <tr>
+        <td>{{ resultado.Clave }}</td>
+        <td>{{ resultado.Nombre }}</td>
+        <td>{{ resultado.Correo }}</td>
+        <td>{{ resultado.Telefono }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% else %}
+    <center><h2>Upps! no encontre los nombres, intenta otra vez</h2></center>
+    <div class="Container-img">
+      <img class="img-error" src="/static/img/ups.gif" alt="" />
+    </div>
+    {% endif %}
+  </body>
+</html>
